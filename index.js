@@ -1,15 +1,13 @@
 const calculate = (array) => {
-
-}
-
-const arrayAssign = (array) => {
+  let filtArray = arrayFilter(array)
   let numOne = null
   let numTwo = null
   let operator
   const opArray = ['*', '/', '-', '+']
+  let value = NaN
 
-  for (let i = 0; i < array.length; i++) {
-    const item = array[i]
+  for (let i = 0; i < filtArray.length; i++) {
+    const item = filtArray[i]
 
     if (Number(item) && numOne === null) {
       numOne = item
@@ -19,7 +17,21 @@ const arrayAssign = (array) => {
       operator = item
     }
   }
+
+  if (operator === '*') {
+    value = numOne * numTwo
+  } else if (operator === '/') {
+    value = numOne / numTwo
+  } else if (operator === '-') {
+    value = numOne - numTwo
+  } else if (operator === '+') {
+    value = numOne + numTwo
+  }
+
+  return value
 }
+
+
 
 const arrayFilter = (array) => {
   let filteredArray = []
@@ -34,3 +46,5 @@ const arrayFilter = (array) => {
 
   return filteredArray
 }
+
+module.exports = calculate
